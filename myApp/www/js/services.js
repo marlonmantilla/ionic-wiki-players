@@ -62,7 +62,7 @@ angular.module('app.services', [])
 
 }])
 
-.factory('Player', ['Restangular', 'DatabaseFactory', '$q', function (Restangular, DatabaseFactory, $q) {
+.factory('Player', ['Restangular', 'DatabaseFactory', '$q', '$localStorage', function (Restangular, DatabaseFactory, $q, $localStorage) {
 
     return {
         fetch: function (name) {
@@ -79,6 +79,24 @@ angular.module('app.services', [])
                 deferred.reject(error);
             });
             return deferred.promise;
+        },
+        setCurrentPlayer: function (objectValues) {
+            var clubes = "";
+            if ( typeof objectValues.clubes === "string" ) {
+                clubes = objectValues.clubes;
+            }else {
+                clubes = _.map(objectValues.clubes, function (d){ return d.club }).reverse().join()
+            }
+            var newPlayer = {
+              name: objectValues.name,
+              team: objectValues.team,
+              dob: objectValues.dob,
+              avatar: objectValues.avatar,
+              clubes: clubes
+            };
+
+            $localStorage.player = newPlayer;
+            return newPlayer;
         },
         all: function () {
             var deferred = $q.defer();
