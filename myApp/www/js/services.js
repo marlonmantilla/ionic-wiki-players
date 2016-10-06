@@ -10,6 +10,8 @@ angular.module('app.services', [])
     return {
         setup: function (window) {
 
+            console.log('******************* window.cordova *****************************');
+            console.log(window.cordova);
             if (window.cordova) {
                 db = $cordovaSQLite.openDB({name: "wikiplayers.db", location: 1});    
             }else {
@@ -48,6 +50,9 @@ angular.module('app.services', [])
         select: function (tableName, condition) {
             var deferred = $q.defer();
             var query = "SELECT * FROM " + tableName + " WHERE " + condition;
+            console.log('*********DB*********');
+            console.log(db);
+            console.log('******************');
             $cordovaSQLite.execute(db, query).then(function(res) {
                 if(res.rows.length > 0) {
                     deferred.resolve(res.rows.item(0));

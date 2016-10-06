@@ -8,8 +8,10 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
   $scope.localPlayers = [];
   $scope.notFound = false;
 
-  Player.all().then(function (res) {
-    $scope.localPlayers = res;
+  $scope.$on( "$ionicView.enter", function( scopes, states ) {
+    Player.all().then(function (res) {
+      $scope.localPlayers = res;
+    });
   });
    
   $scope.openPlayer = function (player) {
