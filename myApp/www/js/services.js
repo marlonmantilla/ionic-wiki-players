@@ -8,9 +8,10 @@ angular.module('app.services', [])
     }
 
     return {
-        setup: function () {
+        setup: function (window) {
+
             if (window.cordova) {
-                db = $cordovaSQLite.openDB("wikiplayers.db");    
+                db = $cordovaSQLite.openDB({name: "wikiplayers.db", location: 1});    
             }else {
                 db = window.openDatabase("wikiplayers", '1', 'my', 1024 * 1024 * 100); // browser
             }

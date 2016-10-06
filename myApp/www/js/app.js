@@ -15,7 +15,7 @@ angular.module('app', ['ionic', 'restangular', 'app.controllers', 'app.routes', 
           cordova.plugins.Keyboard.disableScroll(true);
         }
         
-        DatabaseFactory.setup();
+        DatabaseFactory.setup(window);
 
         if (window.StatusBar) {
           // org.apache.cordova.statusbar required

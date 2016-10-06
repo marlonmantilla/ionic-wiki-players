@@ -6,6 +6,7 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
   $scope.player = {};
   $scope.loading = null;
   $scope.localPlayers = [];
+  $scope.notFound = false;
 
   Player.all().then(function (res) {
     $scope.localPlayers = res;
