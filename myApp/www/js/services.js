@@ -15,7 +15,7 @@ angular.module('app.services', [])
                 db = window.openDatabase("wikiplayers", '1', 'my', 1024 * 1024 * 100); // browser
             }
             
-            $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS players (id integer primary key, name text, team text, dob text, avatar text, clubes)");
+            $cordovaSQLite.execute(db, "CREATE TABLE IF NOT EXISTS players (id integer primary key, name text, team text, dob text, avatar text, clubes text)");
         },
         insert: function (tableName, columnNames, objectValues) {
             var deferred = $q.defer();

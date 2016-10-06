@@ -1,16 +1,16 @@
 <ion-view title="WikiPlayers" id="page1">
     <ion-content padding="true" class="has-header">
-        <h1 id="page-heading1" style="color:#000000;text-align:center;">WIKIPLAYERS</h1>
+        <h1 id="page-heading2">Search for a player: </h1>
         <form id="page-form1" class="list">
             <label class="item item-input" id="page-input1">
-                <span class="input-label">Player Name:</span>
+                <i class="icon ion-search placeholder-icon"></i>
                 <input ng-model="player.name" type="text" placeholder="Messi..." >
             </label>
             <span ng-show="notFound" class="error">Not found</span>
         </form>
-        <a id="page-button1" ng-disabled="loading" class="button button-positive  button-block" ng-click="find()"><span ng-hide="loading">Buscar</span><span ng-show="loading">{{loading}}</span></a>
+        <a id="page-button1" ng-disabled="loading" class="button button-balanced icon-right ion-chevron-right button-block" ng-click="find()"><span ng-hide="loading">Buscar</span><span ng-show="loading">{{loading}}</span></a>
         <ion-list id="page-list2">
-            <ion-item ng-click="openPlayer(localPlayer)" class="item-avatar" ng-repeat="localPlayer in localPlayers" id="page-list-item4">
+            <ion-item ng-click="openPlayer(localPlayer)" class="item-thumbnail-left" ng-repeat="localPlayer in localPlayers" id="page-list-item4">
                 <img src="{{localPlayer.avatar}}">
                 <h2>{{localPlayer.name}}</h2>
             </ion-item>

@@ -1,8 +1,31 @@
-// .player-avatar {
-//   background: url(../img/players-badges.png) no-repeat;
-//   background-size: 132%;
-//   height: 556px;
-//   background-position: 0 -2281px;
-//   text-align: center;
-//   padding-top: 52px;
-// }
+
+.pane{
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#30709a+0,2989d8+33,119999+74,229999+100 */
+	background: #30709a; /* Old browsers */
+	background: -moz-linear-gradient(top,  #30709a 0%, #2989d8 33%, #119999 74%, #229999 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #30709a 0%,#2989d8 33%,#119999 74%,#229999 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #30709a 0%,#2989d8 33%,#119999 74%,#229999 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30709a', endColorstr='#229999',GradientType=0 ); /* IE6-9 */
+}
+
+.bar-wiki{
+	background: #2e77ac;
+}
+
+.bar-wiki .title {
+	color: white;
+}
+
+#page-heading2 {
+	color: white !important;
+  font-size: 1.5em;
+  margin-top: 2em;
+}
+
+.button .icon{
+	color: white !important;
+}
+
+.card {
+	margin: 0 !important;
+}
