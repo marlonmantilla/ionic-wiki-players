@@ -5,34 +5,8 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('app', ['ionic', 'restangular', 'app.controllers', 'app.routes', 'app.directives','app.services', 'ngStorage', 'ngCordova', 'ngSQLite'])
-.constant('DB_CONFIG', {
-    player: {
-        id: "key",
-        name: { type: 'text', null: false, unique: true },
-        team: { type: 'text', null: false },
-        dob: { type: 'text', null: false },
-        avatar: { type: 'text', null: false },
-        clubes: { type: 'text', null: false }
-    }
-})
-.run(function ($SQLite) {
-    $SQLite.dbConfig({
-        name: 'wiki-players',
-        description: 'Wiki Players Database',
-        version: '1.0'
-    });
-})
-.run(function ($SQLite, DB_CONFIG) {
-    $SQLite.init(function (init) {
-        angular.forEach(DB_CONFIG, function (config, name) {
-            init.step();
-            $SQLite.createTable(name, config).then(init.done);
-        });
-        init.finish();
-    });
-})
-.run(function($ionicPlatform) {
+angular.module('app', ['ionic', 'restangular', 'app.controllers', 'app.routes', 'app.directives','app.services', 'ngStorage', 'ngCordova'])
+.run(function($ionicPlatform, DatabaseFactory) {
     $ionicPlatform.ready(function() {
         // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
         // for form inputs)
@@ -40,6 +14,8 @@ angular.module('app', ['ionic', 'restangular', 'app.controllers', 'app.routes', 
           cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
           cordova.plugins.Keyboard.disableScroll(true);
         }
+        
+        DatabaseFactory.setup();
 
         if (window.StatusBar) {
           // org.apache.cordova.statusbar required

@@ -7,16 +7,11 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
   $scope.loading = null;
   $scope.localPlayers = [];
 
-  DatabaseFactory.selectAll('player').then(
-    function () { console.log('Empty Result!'); },
-    function () { console.log('Error!'); },
-    function (data) {
-      $scope.localPlayers = _.map(data.result.rows, function (p) {return p});
-    }
-  );
-
+  Player.all().then(function (res) {
+    $scope.localPlayers = res;
+  });
+   
   $scope.openPlayer = function (player) {
-    $scope.player.name = "";
     $localStorage.name = player.name;
     $localStorage.team = player.team;
     $localStorage.age = player.dob;
@@ -35,11 +30,10 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
       return;
     }
 
-    Player.exists($scope.player.name).then(function (localData) {
-
-      if (localData.rows.length > 0) {
+    Player.existsLocally($scope.player.name).then(function (localData) {
+      if (localData) {
         $scope.loading = null;
-        $scope.openPlayer(localData.rows[0]);
+        $scope.openPlayer(localData);
       }else {
         Player.fetch($scope.player.name).then(function(data){
           $scope.loading = null;
@@ -63,7 +57,9 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
               clubes: $localStorage.clubes
             };
 
-            DatabaseFactory.save('player', newPlayer);
+            Player.save(newPlayer).catch(function (err) {
+              console.log(err);
+            });
 
             $state.go("player");  
           }
@@ -88,4 +84,3 @@ function ($scope, $stateParams,$localStorage) {
 
 
 }])
- 

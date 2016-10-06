@@ -1,14 +1,14 @@
 {
-  "name": "HelloIonic",
+  "name": "wikiplayers",
   "private": "true",
   "devDependencies": {
-    "ionic": "driftyco/ionic-bower#1.3.1"
+    "ionic": "driftyco/ionic-bower#1.3.1",
+    "platform.js": "platform#^1.3.1"
   },
   "dependencies": {
     "restangular": "^1.5.2",
     "lodash": "^4.16.2",
     "ngstorage": "^0.3.11",
-    "ngData": "^0.2.0",
     "angular-sqlite": "^0.1.2"
   },
   "resolutions": {
