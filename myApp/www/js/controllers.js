@@ -44,7 +44,11 @@ function ( $scope, $state, $stateParams,Restangular,$localStorage, DatabaseFacto
             
             var newPlayer = Player.setCurrentPlayer(data);
 
-            Player.save(newPlayer).catch(function (err) {
+            Player.save(newPlayer).then(function(data) {
+              debugger
+              $scope.localPlayers.push(newPlayer);
+            })
+            .catch(function (err) {
               console.log(err);
             });
 

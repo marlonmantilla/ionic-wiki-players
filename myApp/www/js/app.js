@@ -25,9 +25,23 @@ angular.module('app', ['ionic', 'restangular', 'app.controllers', 'app.routes', 
         }
     })
 })
-
+.run(function($ionicPlatform) {
+    $ionicPlatform.ready(function() {
+        // Enable to debug issues.
+        // window.plugins.OneSignal.setLogLevel({logLevel: 4, visualLevel: 4});
+  
+        var notificationOpenedCallback = function(jsonData) {
+            console.log('notificationOpenedCallback: ' + JSON.stringify(jsonData));
+        };
+        console.log("**********ONESIGNAL***************");
+        window.plugins.OneSignal.startInit("a2b826f6-1aee-42a1-97dc-924e9cac381b", "")
+        .handleNotificationOpened(notificationOpenedCallback)
+        .endInit();
+        console.log("**********ONESIGNAL END***************");
+    });
+})
 .config(function(RestangularProvider) {
-    RestangularProvider.setBaseUrl("http://localhost:8081/");
+    RestangularProvider.setBaseUrl("http://api.wikiplayers.co/");
 })
 .config(function($stateProvider, $urlRouterProvider, $ionicConfigProvider) {
 

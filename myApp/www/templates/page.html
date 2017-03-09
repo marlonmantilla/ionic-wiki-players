@@ -11,7 +11,7 @@
         <a id="page-button1" ng-disabled="loading" class="button button-balanced icon-right ion-chevron-right button-block" ng-click="find()"><span ng-hide="loading">Buscar</span><span ng-show="loading">{{loading}}</span></a>
         <ion-list id="page-list2">
             <ion-item ng-click="openPlayer(localPlayer)" class="item-thumbnail-left" ng-repeat="localPlayer in localPlayers" id="page-list-item4">
-                <img src="{{localPlayer.avatar}}">
+                <img src="http://{{localPlayer.avatar}}">
                 <h2>{{localPlayer.name}}</h2>
             </ion-item>
         </ion-list>
